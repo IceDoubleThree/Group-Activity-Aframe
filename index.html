@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <title>Adding Lights and Shadows in A-Frame</title>
+</head>
+
+<body>
+        <a-scene>
+            <!-- Asset Management System -->
+            <a-assets>
+                <a-asset-item id="scenery" src="assets/family_home/scene.gltf"></a-asset-item>
+            </a-assets>
+                
+            <!-- Sky -->
+            <a-sky color="black"></a-sky>
+            
+        <a-entity position="0 0 0">
+            <a-camera></a-camera>
+        </a-entity>
+
+        <a-entity id="ambient" light="type: ambient; intensity: 0.05"></a-entity>
+
+        <a-entity position="17 0 -9">
+
+            <a-entity light="color: #ffffff; distance: 5; intensity: 1.2; type: point" 
+                    id="light_bulb" 
+                    position="-21.37599 3.24911 2.845">
+            </a-entity>
+            
+            <a-entity light="type: point; color: #ffffff; distance: 5; intensity: 1.2" 
+                    id="light_bulb-2" 
+                    position="-15.87979 3.211 3.10997">
+            </a-entity>
+
+            <a-entity id="model"
+                    gltf-model="#scenery"
+                    scale="1.5 1.5 1.5"
+                    position="0 0 0">
+            </a-entity>
+
+        </a-entity>
+        </a-scene>
+    </body>
+</html>

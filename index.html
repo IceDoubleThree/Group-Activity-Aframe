@@ -12,6 +12,7 @@
             <!-- Asset Management System -->
             <a-assets>
                 <a-asset-item id="scenery" src="assets/family_home/scene.gltf"></a-asset-item>
+                <a-asset-item id="beatle" src="assets/automaton_beetle.glb"></a-asset-item>
             </a-assets>
                 
             <!-- Sky -->
@@ -21,8 +22,10 @@
             <a-camera></a-camera>
         </a-entity>
 
+        <!-- Lighting -->
         <a-entity id="ambient" light="type: ambient; intensity: 0.05"></a-entity>
 
+        
         <a-entity position="17 0 -9">
 
             <!-- Outside Lights -->
@@ -49,6 +52,13 @@
             <a-entity light="type: point; color: #FAE9D5; distance: 10; intensity: 0.7" id="light_bulb-6" position="-5.227 4.06611 0.91956">
             </a-entity>
 
+            <!-- Kitchen -->
+            <a-entity light="type: point; color: #FAE9D5; distance: 10; intensity: 0.7" id="light_bulb-7" position="-6.61995 2.62 -6.71126">
+            </a-entity>
+
+            <a-entity light="type: point; color: #FAE9D5; distance: 10; intensity: 0.91" id="light_bulb-8" position="-0.96721 3.18799 -5.998">
+            </a-entity>
+
             <!-- Garage light -->
             <a-entity light="color: #ffffff; distance: 7.67; intensity: 2.29; type: point" id="light_bulb-garage" position="-18.59872 2.9697 -2.338">
             </a-entity>
@@ -58,8 +68,33 @@
                     scale="1.5 1.5 1.5"
                     position="0 0 0">
             </a-entity>
-
         </a-entity>
+            <a-entity 
+                id="beatle_entity" 
+                gltf-model="assets/automaton_beetle.glb" 
+                scale="0.3 0.3 0.3" 
+                position="-5.829 -0.199 -5.064" 
+                
+                rotation="0 47.149 0"
+                
+                animation__1="property: position; to: -2.17 -0.199 -1.66; dur: 4000; easing: linear; startEvents: loaded, loop-restart"
+                
+                animation__2="property: rotation; to: 0 227.149 0; dur: 1000; easing: easeInOutQuad; startEvents: animationcomplete__1"
+                
+                animation__3="property: position; to: -5.829 -0.199 -5.064; dur: 4000; easing: linear; startEvents: animationcomplete__2"
+                
+                animation__4="property: rotation; to: 0 47.149 0; dur: 1000; easing: easeInOutQuad; startEvents: animationcomplete__3">
+
+                <a-entity id="beatle_light" position="-0.01662 4.17622 1.13891" light="type: point; color: #78ff66; intensity: 0.2; distance: 2.9"></a-entity>
+                <a-entity id="beatle_light-2" position="0.04137 3.03601 1.10199" light="type: point; color: #ff0000; intensity: 0.2; distance: 2.9"></a-entity>
+
+            </a-entity>
+
+            <script>
+            document.querySelector('#beatle_entity').addEventListener('animationcomplete__4', function () {
+                this.emit('loop-restart');
+            });
+            </script>
         </a-scene>
     </body>
 </html>
